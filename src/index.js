@@ -14,8 +14,8 @@ export function createRouter(routes) {
 export function useRouter(initPath) {
   const [router, setRouter] = useState([])
   useEffect(() => {
-    let handlerId = router.setHandler(rotuer => {
-      setRouter(router)
+    let handlerId = router.setHandler(r => {
+      setRouter(r)
     })
 
     router.match(initPath)
