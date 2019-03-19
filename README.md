@@ -1,4 +1,6 @@
-## :vertical_traffic_light: fre-router
+<img align="right" height="150" src="https://ws1.sinaimg.cn/large/0065Zy9egy1g189q52z05j30dw0dwwgo.jpg" />
+
+# fre-router
 
 A router hook for react and fre
 
