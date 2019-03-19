@@ -1,4 +1,4 @@
-### :vertical_traffic_light: fre-router
+## :vertical_traffic_light: fre-router
 
 A router hook for react and fre
 
