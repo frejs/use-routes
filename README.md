@@ -25,5 +25,5 @@ createRouter([
   }
 ])
 
-export const App = () => useRouter('/home')
+export const App = () => useRoute('/home')
 ```
