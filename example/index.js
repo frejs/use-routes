@@ -16,6 +16,8 @@ const routes = {
   )
 }
 
-const App = () =>  useRoutes(routes)
+const App = () =>  {
+  return useRoutes(routes)
+}
 
 ReactDOM.render(<App />, document.getElementById('root'))
