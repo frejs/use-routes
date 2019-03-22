@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { useRoutes, push } from './router'
 
 const routes = {
+  '/home': '/',
   '/': () => (
     <>
       <p>home</p>
