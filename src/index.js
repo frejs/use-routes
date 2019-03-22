@@ -15,26 +15,23 @@ export function useRoutes (routes) {
     }
 
     stack[rid] = stackObj
-
     process(rid)
   }
 
-  const result = stackObj.component(stackObj.props)
-
-  return result
+  return typeof stackObj.component === 'function'
+    ? stackObj.component(stackObj.props)
+    : push(stackObj.component)
 }
 
 function process (rid) {
-  const { routes, setter, path: oldPath } = stack[rid]
+  const { routes, setter } = stack[rid]
   const currentPath = location.pathname || '/'
 
-  let route, component, props, path
+  let path, component, props
 
   for (let i = 0; i < routes.length; i++) {
-    ;[route, component] = routes[i]
-    const [reg, group] = prepared[route]
-      ? prepared[route]
-      : preparedRoute(route)
+    ;[path, component] = routes[i]
+    const [reg, group] = prepared[path] ? prepared[path] : preparedRoute(path)
 
     const result = currentPath.match(reg)
     if (!result) {
@@ -44,20 +41,16 @@ function process (rid) {
 
     if (group.length) {
       props = {}
-      group.forEach((item, index) => {
-        props[item] = result[index + 1]
-      })
+      group.forEach((item, index) => (props[item] = result[index + 1]))
     }
 
-    path = currentPath.replace(result[0], '')
     break
   }
 
   Object.assign(stack[rid], {
-    component,
-    props,
     path,
-    route
+    component,
+    props
   })
 
   setter(Date.now())
@@ -80,7 +73,7 @@ function preparedRoute (route) {
   return prepare
 }
 
-export const push = url => {
+export function push (url) {
   window.history.pushState(null, null, url)
   processStack()
 }
@@ -88,3 +81,18 @@ export const push = url => {
 const processStack = () => Object.keys(stack).forEach(process)
 
 window.addEventListener('popstate', processStack)
+
+export function A () {
+  const { onClick: originalOnClick } = props
+
+  const onClick = e => {
+    e.preventDefault()
+    push(e.target.href)
+
+    if (originalOnClick) {
+      originalOnClick(e)
+    }
+  }
+
+  return <a {...props} onClick={onClick} />
+}
