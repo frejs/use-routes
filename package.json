@@ -1,5 +1,5 @@
 {
-  "name": "fre-router",
+  "name": "use-routes",
   "version": "0.0.0",
   "description": "A router hook for react and fre",
   "main": "index.js",
