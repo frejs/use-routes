@@ -1,16 +1,16 @@
-import { useState } from 'react'
+import React from 'react'
 let stack = {}
 let prepared = {}
 
-export function useRouter (router) {
-  const rid = useState(Math.random())
-  const setter = useState(0)[1]
+export const useRoutes = routes => {
+  const rid = React.useState(Math.random().toString())
+  const setter = React.useState(0)[1]
 
   let stackObj = stack[rid]
 
   if (!stackObj) {
     stackObj = {
-      routes: Object.entries(router),
+      routes: Object.entries(routes),
       setter
     }
   }
@@ -21,7 +21,7 @@ export function useRouter (router) {
 }
 
 function process (rid) {
-  const { routes, setter, component, path: oldPath } = stack[rid]
+  const { routes, setter, path: oldPath } = stack[rid]
   const currentPath = window.history.location.pathname
 
   let route, component, props, path

@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { useRoutes, navigate } from './ignore/index'
+import { useRoutes } from '../src/index'
 
 const routes = {
   '/': () => (
     <>
       <p>home</p>
-      <button onClick={() => navigate('/home/jack')}>Go jack</button>
     </>
   ),
   '/home/:id': ({ id }) => (
@@ -17,9 +16,6 @@ const routes = {
   )
 }
 
-const App = () => {
-  const result = useRoutes(routes)
-  return result
-}
+const App = () =>  useRoutes(routes)
 
 ReactDOM.render(<App />, document.getElementById('root'))

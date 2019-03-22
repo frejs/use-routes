@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/132yse/fre-router/issues"
   },
-  "homepage": "https://github.com/132yse/fre-router#readme"
+  "homepage": "https://github.com/132yse/fre-router#readme",
+  "dependencies": {
+    "react": "^16.8.4"
+  }
 }
