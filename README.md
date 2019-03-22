@@ -7,7 +7,9 @@ A router hook for react and fre
 ### Use
 
 ```javascript
-import { useRoutes, push } from 'use-routes'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { useRoutes, push } from './router'
 
 const routes = {
   '/': () => (
@@ -19,10 +21,17 @@ const routes = {
   '/home/:id': ({ id }) => (
     <>
       <p>{id}</p>
-      <button onClick={() => push('/')}>Go jack</button>
+      <button onClick={() => push('/')}>Go home</button>
     </>
-  ),
+  )
 }
 
 const App = () => useRoutes(routes)
+
+ReactDOM.render(<App />, document.getElementById('root'))
 ```
+以上，首先定义一个路由的对象，key 为正则路径，value 为组件
+
+然后 `useRoutes` 返回一个组件，这个组件会根据 `pathname` 进行匹配渲染
+
+`history` 模式，但支持浏览器刷新
