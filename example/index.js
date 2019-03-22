@@ -1,13 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { useRoutes, push } from './router'
+import { useRoutes, push, A } from './router'
 
 const routes = {
   '/home': '/',
   '/': () => (
     <>
       <p>home</p>
-      <button onClick={() => push('/home/jack')}>Go jack</button>
+      <A href='/home/jack'>Go jack</A>
     </>
   ),
   '/home/:id': ({ id }) => (

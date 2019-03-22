@@ -89,9 +89,7 @@ export function A () {
     e.preventDefault()
     push(e.target.href)
 
-    if (onclick) {
-      onclick(e)
-    }
+    if (onclick) onclick(e)
   }
 
   return <a {...props} onClick={onClick} />
