@@ -83,14 +83,14 @@ const processStack = () => Object.keys(stack).forEach(process)
 window.addEventListener('popstate', processStack)
 
 export function A () {
-  const { onClick: originalOnClick } = props
+  const { onClick: onclick } = props
 
   const onClick = e => {
     e.preventDefault()
     push(e.target.href)
 
-    if (originalOnClick) {
-      originalOnClick(e)
+    if (onclick) {
+      onclick(e)
     }
   }
 
