@@ -2,7 +2,7 @@
 
 # use-routes
 
-A router hook for react and fre
+700 Bytes router hook for react and fre
 
 [![](https://img.shields.io/npm/v/use-routes.svg?style=flat)](https://npmjs.com/package/use-routes)
 [![](https://img.shields.io/npm/dm/use-routes.svg?style=flat)](https://npmjs.com/package/use-routes)
