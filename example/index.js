@@ -1,23 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { useRoutes } from '../src/index'
+import { useRoutes, push } from './router'
 
 const routes = {
   '/': () => (
     <>
       <p>home</p>
+      <button onClick={() => push('/home/jack')}>Go jack</button>
     </>
   ),
   '/home/:id': ({ id }) => (
     <>
       <p>{id}</p>
-      <button onClick={() => navigate('/')}>Go jack</button>
+      <button onClick={() => push('/')}>Go home</button>
     </>
   )
 }
 
-const App = () =>  {
-  return useRoutes(routes)
-}
+const App = () => useRoutes(routes)
 
 ReactDOM.render(<App />, document.getElementById('root'))
