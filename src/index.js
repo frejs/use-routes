@@ -82,7 +82,7 @@ const processStack = () => Object.keys(stack).forEach(process)
 
 window.addEventListener('popstate', processStack)
 
-export function A () {
+export function A (props) {
   const { onClick: originalOnClick } = props
 
   const onClick = e => {

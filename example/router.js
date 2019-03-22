@@ -1,3 +1,5 @@
+// MIT 132yse, inspired by routerhook
+
 import React from 'react'
 let stack = {}
 let prepared = {}
@@ -82,7 +84,7 @@ const processStack = () => Object.keys(stack).forEach(process)
 
 window.addEventListener('popstate', processStack)
 
-export function A () {
+export function A (props) {
   const { onClick: onclick } = props
 
   const onClick = e => {
