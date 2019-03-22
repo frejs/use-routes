@@ -13,13 +13,13 @@ const routes = {
   '/': () => (
     <>
       <p>home</p>
-      <button onClick={() => navigate('/home/jack')}>Go jack</button>
+      <button onClick={() => push('/home/jack')}>Go jack</button>
     </>
   ),
   '/home/:id': ({ id }) => (
     <>
       <p>{id}</p>
-      <button onClick={() => navigate('/')}>Go jack</button>
+      <button onClick={() => push('/')}>Go jack</button>
     </>
   ),
 }

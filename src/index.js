@@ -1,10 +1,10 @@
-import React from 'react'
+import { useState } from 'react'
 let stack = {}
 let prepared = {}
 
 export const useRoutes = routes => {
-  const rid = React.useState(Math.random().toString())
-  const setter = React.useState(0)[1]
+  const [rid] = useState(Math.random().toString())
+  const setter = useState(0)[1]
 
   let stackObj = stack[rid]
 
@@ -13,11 +13,15 @@ export const useRoutes = routes => {
       routes: Object.entries(routes),
       setter
     }
+
+    stack[rid] = stackObj
+
+    process(rid)
   }
 
-  stack[rid] = stackObj
+  const result = stackObj.component(stackObj.props)
 
-  process(rid)
+  return result
 }
 
 function process (rid) {
@@ -75,3 +79,12 @@ function preparedRoute (route) {
   prepared[route] = prepare
   return prepare
 }
+
+export const push = url => {
+  window.history.pushState(null, null, url)
+  processStack()
+}
+
+const processStack = () => Object.keys(stack).forEach(process)
+
+window.addEventListener('popstate', processStack)

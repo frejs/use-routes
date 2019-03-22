@@ -1,5 +1,5 @@
 /node_modules/
-/example/ignore/
+/ignore/
 /example/node_modules/
 /example/dist/
 /example/.cache/
