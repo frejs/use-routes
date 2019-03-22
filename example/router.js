@@ -15,11 +15,8 @@ export function useRoutes (routes) {
     }
 
     stack[rid] = stackObj
-
     process(rid)
   }
-
-  console.log(stackObj)
 
   return typeof stackObj.component === 'function'
     ? stackObj.component(stackObj.props)
