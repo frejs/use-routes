@@ -7,25 +7,22 @@ A router hook for react and fre
 ### Use
 
 ```javascript
-import { createRouter, useRouter, push } from 'fre-router'
+import { useRoutes, push } from 'use-routes'
 
-createRouter([
-  {
-    path: '/home',
-    component: () => <>
-      <button onClick={() => push('/home/yse')}>Go yse</button>
-    </>,
-    children: [
-      {
-        path: '/:username',
-        component: params => <>
-          <p>{params.username}</p>
-          <button onClick={() => push('/home')}>Go home</button>
-        </>
-      }
-    ]
-  }
-])
+const routes = {
+  '/': () => (
+    <>
+      <p>home</p>
+      <button onClick={() => navigate('/home/jack')}>Go jack</button>
+    </>
+  ),
+  '/home/:id': ({ id }) => (
+    <>
+      <p>{id}</p>
+      <button onClick={() => navigate('/')}>Go jack</button>
+    </>
+  ),
+}
 
-export const App = () => useRoute('/home')
+const App = () => useRoutes(routes)
 ```
