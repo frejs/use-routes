@@ -13,7 +13,7 @@
 ```javascript
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { useRoutes, push } from './router'
+import { useRoutes, push } from 'use-routes'
 
 const routes = {
   '/': () => (
