@@ -1,11 +1,11 @@
 {
   "name": "use-routes",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A router hook for react and fre",
   "main": "./dist/use-routes.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":"rollup -c"
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,9 @@
   },
   "homepage": "https://github.com/132yse/fre-router#readme",
   "devDependencies": {
-    "react": "^16.8.4",
     "@babel/core": "^7.4.0",
-    "@babel/preset-react": "^7.0.0"
+    "@babel/preset-react": "^7.0.0",
+    "react": "^16.8.4",
+    "rollup-plugin-babel": "^4.3.2"
   }
 }
