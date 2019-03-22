@@ -38,4 +38,4 @@ ReactDOM.render(<App />, document.getElementById('root'))
 
 然后 `useRoutes` 返回一个组件，这个组件会根据 `pathname` 进行匹配渲染
 
-`history` 模式，但支持浏览器刷新
+只 `history` 模式，但支持浏览器刷新
