@@ -1,6 +1,6 @@
 {
   "name": "use-routes",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A router hook for react and fre",
   "main": "./dist/use-routes.js",
   "scripts": {
@@ -18,10 +18,8 @@
     "url": "https://github.com/132yse/fre-router/issues"
   },
   "homepage": "https://github.com/132yse/fre-router#readme",
-  "dependencies": {
-    "react": "^16.8.4"
-  },
   "devDependencies": {
+    "react": "^16.8.4",
     "@babel/core": "^7.4.0",
     "@babel/preset-react": "^7.0.0"
   }
