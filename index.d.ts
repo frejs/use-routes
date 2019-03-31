@@ -6,7 +6,7 @@
  * @interface Routes
  */
 export interface Routes {
-  [key: string]: () => JSX.Element
+  [url: string]: () => JSX.Element
 }
 /**
  * useRoutes
@@ -24,13 +24,13 @@ export function useRoutes(routes: Routes): JSX.Element | null
  */
 export function push(url: string): void
 /**
- * A
+ * AnchorProps
  *
  * @export
- * @interface A
+ * @interface AnchorProps
  * @extends {React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>}
  */
-export interface A
+export interface AnchorProps
   extends React.DetailedHTMLProps<
     React.AnchorHTMLAttributes<HTMLAnchorElement>,
     HTMLAnchorElement
@@ -39,7 +39,7 @@ export interface A
  * A
  *
  * @export
- * @param {A} props
+ * @param {AnchorProps} props
  * @returns {JSX.Element}
  */
-export function A(props: A): JSX.Element
+export function A(props: AnchorProps): JSX.Element
