@@ -27,7 +27,7 @@ const routes = {
       <p>{id}</p>
       <button onClick={() => push('/')}>Go home</button>
     </>
-  ),
+  )
 }
 
 const App = () => useRoutes(routes)
@@ -56,10 +56,10 @@ function App(){
 
 重定向，只需要将 routes 对象的 value 变成需要重定向的 路径字符串 即可
 
-```javascript
+```jsx
 const routes = {
   '/': '/home',
-  '/home': <Home />,
+  '/home': () => <Home />
 }
 ```
 
@@ -78,4 +78,3 @@ const routes = {
 #### License
 
 _MIT ©132yse, inspired by routerhook_
-
