@@ -1,4 +1,3 @@
-/// <reference types="react" />
 /**
  * Routes
  *
@@ -6,7 +5,7 @@
  * @interface Routes
  */
 export interface Routes {
-  [url: string]: () => JSX.Element
+  [url: string]: string | (() => JSX.Element)
 }
 /**
  * useRoutes
