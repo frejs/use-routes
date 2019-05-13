@@ -1,6 +1,6 @@
 {
   "name": "use-routes",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A router hook for react and fre",
   "main": "./dist/use-routes.js",
   "scripts": {

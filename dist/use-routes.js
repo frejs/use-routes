@@ -95,7 +95,8 @@
   window.addEventListener('popstate', processStack);
   function A(props) {
     const {
-      onClick: onclick
+      onClick: onclick,
+      children
     } = props;
 
     const onClick = e => {
@@ -106,7 +107,7 @@
 
     return fre.h("a", _extends({}, props, {
       onClick: onClick
-    }));
+    }), children);
   }
 
   exports.A = A;
