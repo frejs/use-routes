@@ -2,7 +2,7 @@
 
 # use-routes
 
-700 Bytes router hook for react and fre
+> 800 Bytes router hook for Fre and React
 
 [![](https://img.shields.io/npm/v/use-routes.svg?style=flat)](https://npmjs.com/package/use-routes)
 [![](https://img.shields.io/npm/dm/use-routes.svg?style=flat)](https://npmjs.com/package/use-routes)
@@ -11,33 +11,46 @@
 ### Use
 
 ```javascript
-import React from 'react'
-import ReactDOM from 'react-dom'
+import { h, render } from 'fre'
 import { useRoutes, push } from 'use-routes'
 
 const routes = {
   '/': () => (
-    <>
+    <div>
       <p>home</p>
       <button onClick={() => push('/home/jack')}>Go jack</button>
-    </>
+    </div>
   ),
   '/home/:id': ({ id }) => (
-    <>
+    <div>
       <p>{id}</p>
       <button onClick={() => push('/')}>Go home</button>
-    </>
-  )
+    </div>
+  ),
 }
 
 const App = () => useRoutes(routes)
 
-ReactDOM.render(<App />, document.getElementById('root'))
+render(<App />, document.getElementById('root'))
 ```
 
 以上，首先定义一个路由的对象，key 为正则路径，value 为组件
 
 只 `history` 模式，但支持浏览器刷新
+
+### React
+
+use-routes 同时适用于 fre 和 react，但默认是服务于 fre 的
+
+如果想要用于 react，可以通过 webpack 配置别名
+
+```js
+resolve: {
+  alias: {
+    'fre': 'react'
+  }
+}
+```
 
 #### useRoutes
 
@@ -59,7 +72,7 @@ function App(){
 ```jsx
 const routes = {
   '/': '/home',
-  '/home': () => <Home />
+  '/home': () => <Home />,
 }
 ```
 

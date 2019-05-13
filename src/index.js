@@ -1,10 +1,10 @@
-import React from 'react'
+import { useState } from 'fre'
 let stack = {}
 let prepared = {}
 
 export function useRoutes (routes) {
-  const [rid] = React.useState(Math.random().toString())
-  const setter = React.useState(0)[1]
+  const [rid] = useState(Math.random().toString())
+  const setter = useState(0)[1]
 
   let stackObj = stack[rid]
 
