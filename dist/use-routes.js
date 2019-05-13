@@ -1,10 +1,8 @@
 (function (global, factory) {
-  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('react')) :
-  typeof define === 'function' && define.amd ? define(['exports', 'react'], factory) :
-  (global = global || self, factory(global['use-routes'] = {}, global.React));
-}(this, function (exports, React) { 'use strict';
-
-  React = React && React.hasOwnProperty('default') ? React['default'] : React;
+  typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('fre')) :
+  typeof define === 'function' && define.amd ? define(['exports', 'fre'], factory) :
+  (global = global || self, factory(global['use-routes'] = {}, global.fre));
+}(this, function (exports, fre) { 'use strict';
 
   function _extends() {
     _extends = Object.assign || function (target) {
@@ -27,8 +25,8 @@
   let stack = {};
   let prepared = {};
   function useRoutes(routes) {
-    const [rid] = React.useState(Math.random().toString());
-    const setter = React.useState(0)[1];
+    const [rid] = fre.useState(Math.random().toString());
+    const setter = fre.useState(0)[1];
     let stackObj = stack[rid];
 
     if (!stackObj) {
@@ -111,9 +109,9 @@
     }));
   }
 
-  exports.useRoutes = useRoutes;
-  exports.push = push;
   exports.A = A;
+  exports.push = push;
+  exports.useRoutes = useRoutes;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

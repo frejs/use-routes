@@ -1,6 +1,6 @@
 {
   "name": "use-routes",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "A router hook for react and fre",
   "main": "./dist/use-routes.js",
   "scripts": {
@@ -23,5 +23,6 @@
     "@babel/preset-react": "^7.0.0",
     "react": "^16.8.4",
     "rollup-plugin-babel": "^4.3.2"
-  }
+  },
+  "dependencies": {}
 }
