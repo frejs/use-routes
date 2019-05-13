@@ -104,7 +104,7 @@
       if (onclick) onclick(e);
     };
 
-    return React.createElement("a", _extends({}, props, {
+    return fre.h("a", _extends({}, props, {
       onClick: onClick
     }));
   }

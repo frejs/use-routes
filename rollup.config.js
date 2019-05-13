@@ -10,7 +10,14 @@ export default {
   plugins: [
     babel({
       babelrc: false,
-      presets: [['@babel/preset-react']],
+      plugins: [
+        [
+          '@babel/plugin-transform-react-jsx',
+          {
+            pragma: 'h'
+          }
+        ]
+      ]
     })
   ]
 }

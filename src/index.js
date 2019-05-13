@@ -1,4 +1,4 @@
-import { useState } from 'fre'
+import { h, useState } from 'fre'
 let stack = {}
 let prepared = {}
 
