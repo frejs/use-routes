@@ -78,7 +78,7 @@ function App(){
 ```jsx
 const routes = {
   '/': '/home',
-  '/home': () => <Home />,
+  '/home': Home,
 }
 ```
 

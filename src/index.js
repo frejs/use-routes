@@ -18,9 +18,9 @@ export function useRoutes (routes) {
     process(rid)
   }
 
-  return typeof stackObj.component === 'function'
-    ? stackObj.component(stackObj.props)
-    : push(stackObj.component)
+  return typeof stackObj.component === 'string'
+    ? push(stackObj.component)
+    : stackObj.component(stackObj.props)
 }
 
 function process (rid) {
