@@ -52,6 +52,12 @@ resolve: {
 }
 ```
 
+然后还要修改 `createElement` 为 `h` 函数
+
+```js
+const h = React.createElement
+```
+
 #### useRoutes
 
 ```JSX
