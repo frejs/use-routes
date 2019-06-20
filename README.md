@@ -53,7 +53,7 @@ resolve: {
 ```
 ```js
 import React from 'react'
-import {useRoutes} from 'use-routes'
+import { useRoutes } from 'use-routes'
 
 function App(){
   const result = useRoutes(routes)
