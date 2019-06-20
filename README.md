@@ -36,7 +36,7 @@ render(<App />, document.getElementById('root'))
 
 以上，首先定义一个路由的对象，key 为正则路径，value 为组件
 
-只 `history` 模式，但支持浏览器刷新
+只 `history` 模式
 
 ### React
 
@@ -51,11 +51,14 @@ resolve: {
   }
 }
 ```
-
-然后还要修改 `createElement` 为 `h` 函数
-
 ```js
-const h = React.createElement
+import React from 'react'
+import {useRoutes} from 'use-routes'
+
+function App(){
+  const result = useRoutes(routes)
+  return result || <NotFound />
+}
 ```
 
 #### useRoutes
