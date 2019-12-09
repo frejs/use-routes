@@ -1,76 +1,71 @@
 import { h, useState } from 'fre'
-let stack = {}
-let prepared = {}
+let routeStack = {}
+let pathCache = {}
 
 export function useRoutes (routes) {
-  const [rid] = useState(Math.random().toString())
+  const id = useState(Symbol())[0]
   const setter = useState(0)[1]
 
-  let stackObj = stack[rid]
-
-  if (!stackObj) {
-    stackObj = {
-      routes: Object.entries(routes),
-      setter
-    }
-
-    stack[rid] = stackObj
-    process(rid)
+  let stack = {
+    routes: Object.entries(routes),
+    setter
   }
 
-  return typeof stackObj.component === 'string'
-    ? push(stackObj.component)
-    : stackObj.component(stackObj.props)
+  routeStack[id] = stack
+  perfrom()
+
+  return typeof stack.component === 'string'
+    ? push(stack.component)
+    : stack.component(stack.props)
 }
 
-function process (rid) {
-  const { routes, setter } = stack[rid]
+function perfrom (rid) {
+  const { routes, setter } = routeStack[rid]
   const currentPath = location.pathname || '/'
 
   let path, component, props
 
   for (let i = 0; i < routes.length; i++) {
     ;[path, component] = routes[i]
-    const [reg, group] = prepared[path] ? prepared[path] : preparedRoute(path)
+    const [reg, params] = pathSlice(path)
 
-    const result = currentPath.match(reg)
-    if (!result) {
+    const res = currentPath.match(reg)
+    if (!res) {
       component = () => {}
       continue
     }
 
-    if (group.length) {
+    if (params.length) {
       props = {}
       group.forEach((item, index) => (props[item] = result[index + 1]))
     }
-
     break
   }
 
-  Object.assign(stack[rid], {
+  Object.assign(routeStack[rid], {
     path,
     component,
     props
   })
 
-  setter(Date.now())
+  setter(Symbol())
 }
 
-function preparedRoute (route) {
-  if (prepared[route]) return prepared[route]
-  const prepare = [
+function pathSlice(path) {
+  if (pathCache[path]) return pathCache[path]
+  const slice = [
     new RegExp(
-      `${route.substr(0, 1) === '*' ? '' : '^'}${route
+      `${path.substr(0, 1) === '*' ? '' : '^'}${path
         .replace(/:[a-zA-Z]+/g, '([^/]+)')
-        .replace(/\*/g, '')}${route.substr(-1) === '*' ? '' : '$'}`
+        .replace(/\*/g, '')}${path.substr(-1) === '*' ? '' : '$'}`
     )
   ]
 
-  const props = route.match(/:[a-zA-Z]+/g)
-  prepare.push(props ? props.map(name => name.substr(1)) : [])
+  const params = path.match(/:[a-zA-Z]+/g)
+  slice.push(params ? params.map(name => name.substr(1)) : [])
 
-  prepared[route] = prepare
-  return prepare
+  pathCache[path] = slice
+  return slice
 }
 
 export function push (url) {
@@ -78,7 +73,7 @@ export function push (url) {
   processStack()
 }
 
-const processStack = () => Object.keys(stack).forEach(process)
+const processStack = () => Object.keys(routeStack).forEach(perfrom)
 
 window.addEventListener('popstate', processStack)
 
