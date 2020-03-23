@@ -82,13 +82,24 @@ const processStack = () =>{
 
 window.addEventListener('popstate', processStack)
 
+function isModifiedEvent(event) {
+  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
+}
+
 export function A(props) {
   const {onClick: onclick, children} = props
 
   const onClick = e => {
-    e.preventDefault()
-    push(e.target.href)
     if (onclick) onclick(e)
+    if (
+      !event.defaultPrevented && // onClick prevented default
+      event.button === 0 && // ignore everything but left clicks
+      (!props.target || props.target === '_self') && // let browser handle "target=_blank" etc.
+      !isModifiedEvent(event) // ignore clicks with modifier keys
+    ) {
+      e.preventDefault()
+      push(e.target.href)
+    }
   }
 
   return (
